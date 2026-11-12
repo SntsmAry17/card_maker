@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e7e6e2">
+  <meta name="description" content="Make a monochrome share card for an anonymous question or doodle.">
+  <title>Share card maker — sankaa_velt</title>
+  <link rel="stylesheet" href="share-card-maker.css">
+</head>
+<body>
+  <main class="maker">
+    <header class="page-head">
+      <p class="eyebrow">little inbox keepsake / 01</p>
+      <h1>share card <span>maker</span></h1>
+      <p class="intro">Turn an anonymous question or doodle into a little card for your socials.</p>
+    </header>
+
+    <div class="layout">
+      <section class="controls" aria-labelledby="details-title">
+        <div class="section-label"><span>01 / your content</span><span>local only</span></div>
+        <h2 id="details-title">Pick a card type</h2>
+
+        <label class="field-label" for="card-type">Card type</label>
+        <select id="card-type">
+          <option value="question">Anonymous question</option>
+          <option value="doodle">Anonymous doodle</option>
+        </select>
+
+        <div id="question-fields" class="content-fields">
+          <label class="field-label" for="question">Question or message</label>
+          <textarea id="question" maxlength="700" placeholder="Paste the anonymous question here..."></textarea>
+          <p class="hint">Only the text you paste appears on the card. Give long messages a short excerpt.</p>
+        </div>
+
+        <div id="doodle-fields" class="content-fields" hidden>
+          <label class="field-label" for="doodle-file">Doodle image (PNG)</label>
+          <input id="doodle-file" type="file" accept="image/png,.png">
+          <p class="hint">Download the PNG from Storage first, then choose it here.</p>
+          <label class="field-label" for="doodle-note">Optional note</label>
+          <textarea id="doodle-note" maxlength="180" placeholder="Add a short note, if you like..."></textarea>
+        </div>
+
+        <p class="privacy-note"><span aria-hidden="true">●</span> This tool works in your browser. It does not connect to Supabase or upload your content.</p>
+
+        <div class="actions">
+          <button class="primary" id="download" type="button">download PNG</button>
+          <button class="secondary" id="share" type="button" hidden>share image</button>
+        </div>
+        <p class="status" id="status" role="status" aria-live="polite">Add a message or choose a doodle to start.</p>
+      </section>
+
+      <section class="preview-panel" aria-labelledby="preview-title">
+        <div class="section-label"><span>02 / preview</span><span>portrait · 9:10</span></div>
+        <h2 id="preview-title" class="visually-hidden">Card preview</h2>
+        <div class="preview-frame"><canvas id="preview" width="1080" height="1200" aria-label="Preview of your share card"></canvas></div>
+        <p class="preview-hint">A 1080 × 1200 PNG, ready for a post or story.</p>
+      </section>
+    </div>
+    <footer><span>sankaa_velt</span><span>anonymous words, shared by choice</span></footer>
+  </main>
+  <script src="share-card-maker.js"></script>
+</body>
+</html>
